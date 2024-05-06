@@ -29,7 +29,7 @@
     
     <label for="route">Направление:</label>
     <select id="route" onchange="showSecondMenu()">
-        <option disabled>Выберите значение</option>
+        <option selected disabled>Выберите значение</option>
         <option value="option1">Заявка в БП Инцидент</option>
         <option value="option2">МП Рейс</option>
     </select>
@@ -47,7 +47,7 @@
             additionalFields.innerHTML = "";
 
             if (menu1Value === 'option1') {
-                secondMenu.innerHTML = '<label for="subject">Тема:</label> <select id="subject" onchange="showFields()"> <option disabled>Выберите значение</option> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
+                secondMenu.innerHTML = '<label for="subject">Тема:</label> <select id="subject" onchange="showFields()"> <option selected disabled>Выберите значение</option> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
             }
         }
 
