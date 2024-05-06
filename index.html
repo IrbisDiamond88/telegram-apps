@@ -12,7 +12,7 @@
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText('Отправить').show().onClick(function () {
         var menu1Value = document.getElementById("route").value;
-        var menu2Value = document.getElementById("secondMenu").value;
+        var menu2Value = document.getElementById("subject").value;
         var requestNumber = document.getElementById("requestNumber") ? document.getElementById("requestNumber").value : "";
         var phone = document.getElementById("phone") ? document.getElementById("phone").value : "";
         var description = document.getElementById("description") ? document.getElementById("description").value : "";
@@ -27,7 +27,7 @@
     </script>
     <h2>Интерактивная форма</h2>
     
-    <label for="route">Меню 1:</label>
+    <label for="route">Направление:</label>
     <select id="route" onchange="showSecondMenu()">
         <option value="option1" selected>Заявка в БП Инцидент</option>
         <option value="option2">МП Рейс</option>
@@ -38,7 +38,7 @@
     
     <script>
         function showSecondMenu() {
-            var menu1Value = document.getElementById("route").value;
+            var menu1Value = document.getElementById("menu1").value;
             var secondMenu = document.getElementById("secondMenu");
             var additionalFields = document.getElementById("additionalFields");
 
@@ -46,12 +46,12 @@
             additionalFields.innerHTML = "";
 
             if (menu1Value === 'option1') {
-                secondMenu.innerHTML = '<label for="secondMenu">Меню 2:</label> <select id="secondMenu" onchange="showFields()"> <option value="escalation" selected>Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
+                secondMenu.innerHTML = '<label for="subject">Тема:</label> <select id="subject" onchange="showFields()"> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
             }
         }
 
         function showFields() {
-            var menu2Value = document.getElementById("secondMenu").value;
+            var menu2Value = document.getElementById("subject").value;
             var additionalFields = document.getElementById("additionalFields");
             additionalFields.innerHTML = "";
 
@@ -63,8 +63,7 @@
                 additionalFields.innerHTML = '<label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
             }
         }
-    </script>
-    
+    </script>    
 </body>
 <script type="text/javascript">
     Telegram.WebApp.expand();
