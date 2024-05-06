@@ -27,11 +27,36 @@
     });
 </script>
 <body style="background-color: #ffffff">
-<div style="position: absolute; margin-top: 5vh; margin-left: 5vw; height: 90vh; width: 90vw; border-radius: 5vh; background-color: var(--tg-theme-bg-color); box-shadow: 0 0 2vw
- #000000;">
-    <div id="picker"
-         style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%"></div>
-</div>
+    <h2>Введите данные:</h2>
+    <label for="menu1">Меню 1:</label>
+    <select id="menu1">
+        <option value="option1">Вариант 1</option>
+        <option value="option2">Вариант 2</option>
+        <option value="option3">Вариант 3</option>
+    </select>
+    <br><br>
+    <label for="menu2">Меню 2:</label>
+    <select id="menu2">
+        <option value="optionA">Вариант A</option>
+        <option value="optionB">Вариант B</option>
+        <option value="optionC">Вариант C</option>
+    </select>
+    <br><br>
+    <label for="text">Текст (формат XX-XXXX):</label>
+    <input type="text" id="text" pattern="[A-Z]{2}-[0-9]{4}" title="Введите текст в формате XX-XXXX">
+    <br><br>
+    <label for="textarea">Свободный ввод текста:</label>
+    <textarea id="textarea" rows="4" cols="50"></textarea>
+    
+    <script>
+        document.getElementById('text').addEventListener('input', function() {
+            if (!this.validity.valid) {
+                this.setCustomValidity('Введите текст в формате XX-XXXX');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    </script>
 </body>
 <script type="text/javascript">
     Telegram.WebApp.expand();
