@@ -17,26 +17,32 @@
     });
 </script>
 <body style="background-color: #ffffff">
-    <h2>Введите данные:</h2>
+    <h2>Интерактивная форма</h2>
+    
     <label for="menu1">Меню 1:</label>
-    <select id="menu1">
+    <select id="menu1" onchange="showElements()">
         <option value="option1">Вариант 1</option>
         <option value="option2">Вариант 2</option>
         <option value="option3">Вариант 3</option>
     </select>
-    <br><br>
-    <label for="menu2">Меню 2:</label>
-    <select id="menu2">
-        <option value="optionA">Вариант A</option>
-        <option value="optionB">Вариант B</option>
-        <option value="optionC">Вариант C</option>
-    </select>
-    <br><br>
-    <label for="text">Текст (формат XX-XXXX):</label>
-    <input type="text" id="text" pattern="[A-Z]{2}-[0-9]{4}" title="Введите текст в формате XX-XXXX">
-    <br><br>
-    <label for="textarea">Свободный ввод текста:</label>
-    <textarea id="textarea" rows="4" cols="50"></textarea>
+    
+    <div id="dynamicElements"></div>
+    
+    <script>
+        function showElements() {
+            var menu1Value = document.getElementById("menu1").value;
+            var dynamicElements = document.getElementById("dynamicElements");
+            dynamicElements.innerHTML = ""; // Очистка содержимого
+            
+            if (menu1Value === 'option1') {
+                dynamicElements.innerHTML += '<input type="text" placeholder="Элемент 1">';
+            } else if (menu1Value === 'option2') {
+                dynamicElements.innerHTML += '<input type="email" placeholder="Элемент 2">';
+            } else if (menu1Value === 'option3') {
+                dynamicElements.innerHTML += '<textarea placeholder="Элемент 3" rows="4" cols="50"></textarea>';
+            }
+        }
+    </script>
     
     <script>
         document.getElementById('text').addEventListener('input', function() {
