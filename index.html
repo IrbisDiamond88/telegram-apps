@@ -19,27 +19,40 @@
 <body style="background-color: #ffffff">
     <h2>Интерактивная форма</h2>
     
-    <label for="menu1">Меню 1:</label>
-    <select id="menu1" onchange="showElements()">
-        <option value="option1">Вариант 1</option>
-        <option value="option2">Вариант 2</option>
-        <option value="option3">Вариант 3</option>
+    <label for="route">Меню 1:</label>
+    <select id="route" onchange="showSecondMenu()">
+        <option value="option1">Заявка в БП Инцидент</option>
+        <option value="option2">МП Рейс</option>
     </select>
     
-    <div id="dynamicElements"></div>
+    <div id="secondMenu"></div>
+    <div id="additionalFields"></div>
     
     <script>
-        function showElements() {
-            var menu1Value = document.getElementById("menu1").value;
-            var dynamicElements = document.getElementById("dynamicElements");
-            dynamicElements.innerHTML = ""; // Очистка содержимого
-            
+        function showSecondMenu() {
+            var menu1Value = document.getElementById("route").value;
+            var secondMenu = document.getElementById("secondMenu");
+            var additionalFields = document.getElementById("additionalFields");
+
+            secondMenu.innerHTML = "";
+            additionalFields.innerHTML = "";
+
             if (menu1Value === 'option1') {
-                dynamicElements.innerHTML += '<input type="text" placeholder="Элемент 1">';
-            } else if (menu1Value === 'option2') {
-                dynamicElements.innerHTML += '<input type="email" placeholder="Элемент 2">';
-            } else if (menu1Value === 'option3') {
-                dynamicElements.innerHTML += '<textarea placeholder="Элемент 3" rows="4" cols="50"></textarea>';
+                secondMenu.innerHTML = '<label for="menu2">Меню 2:</label> <select id="menu2" onchange="showFields()"> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
+            }
+        }
+
+        function showFields() {
+            var menu2Value = document.getElementById("menu2").value;
+            var additionalFields = document.getElementById("additionalFields");
+            additionalFields.innerHTML = "";
+
+            if (menu2Value === 'escalation') {
+                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XX-XXXX):</label> <input type="text" id="requestNumber" pattern="[A-Z]{2}-[0-9]{4}" title="Введите номер заявки в формате XX-XXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
+            } else if (menu2Value === 'status') {
+                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XX-XXXX):</label> <input type="text" id="requestNumber" pattern="[A-Z]{2}-[0-9]{4}" title="Введите номер заявки в формате XX-XXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона">';
+            } else if (menu2Value === 'create') {
+                additionalFields.innerHTML = '<label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
             }
         }
     </script>
