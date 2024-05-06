@@ -44,15 +44,6 @@
         }
     </script>
     
-    <script>
-        document.getElementById('text').addEventListener('input', function() {
-            if (!this.validity.valid) {
-                this.setCustomValidity('Введите текст в формате XX-XXXX');
-            } else {
-                this.setCustomValidity('');
-            }
-        });
-    </script>
 </body>
 <script type="text/javascript">
     Telegram.WebApp.expand();
