@@ -43,12 +43,12 @@
             additionalFields.innerHTML = "";
 
             if (menu1Value === 'option1') {
-                secondMenu.innerHTML = '<label for="menu2">Меню 2:</label> <select id="menu2" onchange="showFields()"> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
+                secondMenu.innerHTML = '<label for="secondMenu">Меню 2:</label> <select id="secondMenu" onchange="showFields()"> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
             }
         }
 
         function showFields() {
-            var menu2Value = document.getElementById("menu2").value;
+            var menu2Value = document.getElementById("secondMenu").value;
             var additionalFields = document.getElementById("additionalFields");
             additionalFields.innerHTML = "";
 
