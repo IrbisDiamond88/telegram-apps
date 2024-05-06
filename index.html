@@ -16,7 +16,7 @@
         var requestNumber = document.getElementById("requestNumber") ? document.getElementById("requestNumber").value : "";
         var phone = document.getElementById("phone") ? document.getElementById("phone").value : "";
         var description = document.getElementById("description") ? document.getElementById("description").value : "";
-        const data = JSON.stringify({round: menu1Value, secondMenu: menu2Value, rNumber: requestNumber, pNumber: phone, descr: description});
+        const data = JSON.stringify({round: menu1Value, subject: menu2Value, rNumber: requestNumber, pNumber: phone, descr: description});
         Telegram.WebApp.sendData(data);
         Telegram.WebApp.close();
     });
