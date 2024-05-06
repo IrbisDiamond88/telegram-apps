@@ -11,7 +11,12 @@
 <script type="text/javascript">
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText('Отправить').show().onClick(function () {
-        const data = JSON.stringify({hex: "текст1", rgb: "текст2"});
+        var menu1Value = document.getElementById("route").value;
+        var menu2Value = document.getElementById("secondMenu").value;
+        var requestNumber = document.getElementById("requestNumber") ? document.getElementById("requestNumber").value : "";
+        var phone = document.getElementById("phone") ? document.getElementById("phone").value : "";
+        var description = document.getElementById("description") ? document.getElementById("description").value : "";
+        const data = JSON.stringify({round: menu1Value, secondMenu: menu2Value, rNumber: requestNumber, pNumber: phone, descr: description});
         Telegram.WebApp.sendData(data);
         Telegram.WebApp.close();
     });
