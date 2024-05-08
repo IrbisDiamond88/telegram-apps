@@ -30,8 +30,8 @@
     <label for="route">Направление:</label>
     <select id="route" onchange="showSecondMenu()">
         <option selected disabled>Выберите значение</option>
-        <option value="option1">Заявка в БП Инцидент</option>
-        <option value="option2">МП Рейс</option>
+        <option value="1">Заявка в БП Инцидент</option>
+        <option value="2">МП Рейс</option>
     </select>
     
     <div id="secondMenu"></div>
@@ -46,7 +46,7 @@
             secondMenu.innerHTML = "";
             additionalFields.innerHTML = "";
 
-            if (menu1Value === 'option1') {
+            if (menu1Value === '1') {
                 secondMenu.innerHTML = '<label for="subject">Тема:</label> <select id="subject" onchange="showFields()"> <option selected disabled>Выберите значение</option> <option value="escalation">Эскалация</option> <option value="status">Запрос статуса</option> <option value="create">Создание заявки</option></select>';
             }
         }
@@ -57,9 +57,9 @@
             additionalFields.innerHTML = "";
 
             if (menu2Value === 'escalation') {
-                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XX-XXXX):</label> <input type="text" id="requestNumber" pattern="[A-Z]{2}-[0-9]{4}" title="Введите номер заявки в формате XX-XXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
+                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XXXXXXXXX):</label> <input type="text" id="requestNumber" pattern="^[23]?[0-9]{7}" title="Введите номер заявки в формате XXXXXXXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
             } else if (menu2Value === 'status') {
-                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XX-XXXX):</label> <input type="text" id="requestNumber" pattern="[A-Z]{2}-[0-9]{4}" title="Введите номер заявки в формате XX-XXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона">';
+                additionalFields.innerHTML = '<label for="requestNumber">Номер заявки (XXXXXXXXX):</label> <input type="text" id="requestNumber" pattern="^[23]?[0-9]{7}" title="Введите номер заявки в формате XXXXXXXXX"> <br> <label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона">';
             } else if (menu2Value === 'create') {
                 additionalFields.innerHTML = '<label for="phone">Контактный номер телефона:</label> <input type="text" id="phone" pattern="^[+]?[\d\s()-]{7,}$" title="Введите номер телефона"> <br> <label for="description">Описание проблемы (не менее 50 символов):</label> <textarea id="description" rows="4" cols="50" minlength="50"></textarea>';
             }
